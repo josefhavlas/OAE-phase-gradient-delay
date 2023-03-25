@@ -13,7 +13,7 @@ def getGammaLarge(n, x_axis):
             gamma - calculated large gamma for given x-axis, shape: (n_elem, )
     """
     gamma = np.exp(x_axis**2)  # initiating value for n=1
-    for _ in range(n-1):  # continue from 2 to n
+    for _ in range(2, n):  # continue for the rest iterations
         gamma = np.exp(gamma - 1)
 
     return gamma
@@ -30,7 +30,7 @@ def getGammaSmall(n):
             gamma - calculated small gamma, shape: scalar
     """
     gamma = 1  # initiating value for n=1
-    for _ in range(n-1):  # continue from 2 to n
+    for _ in range(2, n):  # continue for the rest iterations
         gamma = np.log(gamma + 1)
 
     return gamma
@@ -48,12 +48,15 @@ def getWindow(x_axis, cutoff, n):
         OUTPUT: 
             S_n - cutoff window, shape: (n_elem, )
     """
-    # both given recursively
-    gamma_n_large = getGammaLarge(n, x_axis)
-    gamma_n_small = getGammaSmall(n)
-    scale_factor = np.sqrt(gamma_n_small)  # lambda in the paper
+    # both gammas given recursively
+    g_n = getGammaSmall(n)
 
-    S_n = (1/gamma_n_large)*(scale_factor*x_axis/cutoff)
+    # scaling the x_axis
+    scale_factor = np.sqrt(g_n)  # lambda in the paper
+    t = scale_factor*x_axis/cutoff
+    G_n = getGammaLarge(n, t)
+
+    S_n = 1/G_n  # the final window
     return S_n
 
 
