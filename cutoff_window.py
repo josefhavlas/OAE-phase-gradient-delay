@@ -58,27 +58,3 @@ def getWindow(x_axis, cutoff, n):
 
     S_n = 1/G_n  # the final window
     return S_n
-
-
-def rectWindow(x_axis, cutoff):
-    """
-        getWindow: calculates the simple rectangle cuttof window
-
-        INPUT:
-            x_axis - axis on which we want to cut off, shape: (n_elem, )
-            cutoff - the symmetric cutoff on the x-axis, shape: scalar
-
-        OUTPUT: 2 4 6 8 10
-            rect - rectangle window, shape: (n_elem, )
-    """
-    # if np.size(x_axis) % 2 == 0:
-    #     x_center = int(np.size(x_axis)/2)
-    # else:
-    #     x_center = int((np.size(x_axis)-1)/2 + 1)
-    # x_center_val = x_axis[x_center]
-
-    rect = np.ones(np.size(x_axis))
-    # rect[np.abs(x_axis) >= np.abs(x_center_val - cutoff)] = 0
-    rect[np.abs(x_axis) >= cutoff] = 0
-
-    return rect
