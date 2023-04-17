@@ -5,7 +5,18 @@ from gradient_delay import *
 
 
 def processIsoInt(file_path):
-    mat_ISOINT = scipy.io.loadmat(file_path)
+    """
+        processIsoInt: computes a gradient-delay reference value for ISOINT data which are contained in a .mat file
+
+        INPUT:
+            file_path -  path from which we upload data, shape: Matlab matrix file (.mat)
+
+        OUTPUT: 
+            freq_ISOINT - frequency axis of the output gradient-delay, shape: (n_elem, )
+            group_delay_ISOINT - values of the gradient-delay on the frequency axis, shape: (n_elem, )
+            maximum_ISOINT - global maximum of the basilar-membrane transfer function (ROI), shape: (n_elem, )
+    """
+    mat_ISOINT = scipy.io.loadmat(file_path)  # loading the .mat file
 
     # NOT EVENLY SPACED!!!
     freq_ISOINT = mat_ISOINT['frekax'].flatten()  # frequency axis
