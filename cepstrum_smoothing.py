@@ -1,3 +1,13 @@
+"""
+Smoothing with cepstral analysis algorithm 
+
+Author: havlajos
+Created: 13/04/2023
+Last Update: 09/07/2023
+
+Description: Script with functions used in cepstral analysis algorithm applied on OAE data.
+"""
+
 import numpy as np
 from scipy.signal import savgol_filter
 from peak_picking import *

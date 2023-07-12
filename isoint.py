@@ -1,3 +1,13 @@
+"""
+Isointensity phase-gradient delays (at isolated frequencies)
+
+Author: havlajos
+Created: 13/04/2023
+Last Update: 09/07/2023
+
+Description: Script processing phase-gradient delays of reference nonlinear cochlear model OAE data.
+"""
+
 import scipy.io
 import numpy as np
 from peak_picking import *
@@ -20,7 +30,10 @@ def processIsoInt(file_path):
 
     # NOT EVENLY SPACED!!!
     freq_ISOINT = mat_ISOINT['frekax'].flatten()  # frequency axis
-    Y = mat_ISOINT['Y'].flatten()  # BM deviation
+    if "Y" in mat_ISOINT:
+        Y = mat_ISOINT['Y'].flatten()  # BM deviation
+    elif "Ybm" in mat_ISOINT:
+        Y = mat_ISOINT['Ybm'].flatten()  # BM deviation
     Yme = mat_ISOINT['Yme'].flatten()  # stapes deviation
     # maximum index on the frequency axis
     # freq_range_ISOINT = np.size(freq_ISOINT)

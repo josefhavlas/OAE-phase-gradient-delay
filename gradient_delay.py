@@ -1,3 +1,13 @@
+"""
+Phase-gradient delay of OAE data
+
+Author: havlajos
+Created: 07/04/2023
+Last Update: 09/07/2023
+
+Description: Function calculating the phase-gradient delay of OAE data.
+"""
+
 import numpy as np
 
 

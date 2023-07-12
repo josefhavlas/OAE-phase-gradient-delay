@@ -1,3 +1,13 @@
+"""
+Cutoff window using recursive-exponential filter
+
+Author: havlajos
+Created: 16/03/2023
+Last Update: 09/07/2023
+
+Description: The window is used to cut off specific quefrencies in the cepstral analysis method.
+"""
+
 import numpy as np
 
 

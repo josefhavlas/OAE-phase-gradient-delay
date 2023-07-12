@@ -1,3 +1,13 @@
+"""
+Peak-picking algorithm
+
+Author: havlajos
+Created: 14/11/2022
+Last Update: 09/07/2023
+
+Description: Functions used when applying the peak-picking algorithm.
+"""
+
 import numpy as np
 
 
